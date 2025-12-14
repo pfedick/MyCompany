@@ -48,15 +48,15 @@ mingw: update_version
 	make -j 16 ppl7
 	make -j 16 ppl_toolkit
 	make -j 16 $(PROGRAM)
-	ldd decker.exe  | grep -v WINDOWS | grep ucrt64 | awk '{print $$3}' | while read line  ; do cp $${line} release/deploy; done
+	ldd mycompany.exe  | grep -v WINDOWS | grep ucrt64 | awk '{print $$3}' | while read line  ; do cp $${line} release/deploy; done
 
 	cat setup.tpl.iss | sed "s/^AppVersion=.*/AppVersion=${VERSION}.${BUILD_NUMBER}/"  \
-		| sed "s/^AppVerName=.*/AppVerName=GeorgeDecker ${VERSION}/"  \
+		| sed "s/^AppVerName=.*/AppVerName=MyCompany ${VERSION}/"  \
 		| sed "s/^VersionInfoVersion=.*/VersionInfoVersion=${VERSION}/"  \
-		| sed "s/^OutputBaseFilename=.*/OutputBaseFilename=GeorgeDecker-${VERSION}-Setup/"  \
+		| sed "s/^OutputBaseFilename=.*/OutputBaseFilename=MyCompany-${VERSION}-Setup/"  \
 		> setup.iss
-	cp decker.exe release/deploy
-	strip release/deploy/decker.exe
+	cp mycompany.exe release/deploy
+	strip release/deploy/mycompany.exe
 
 setup: mingw
 	"C:\Program Files (x86)\Inno Setup 5\ISCC.exe" setup.iss
@@ -103,9 +103,9 @@ update_version:
 	@mkdir -p tmp
 	@echo "#ifndef VERSION_H_" > tmp/version.h
 	@echo "#define VERSION_H_" >> tmp/version.h
-	@echo "#define DECKER_VERSION \"$(VERSION)\"" >> tmp/version.h
-	@echo "#define DECKER_REVSION \"$(BUILD_NUMBER)\"" >> tmp/version.h
-	@echo "#define DECKER_BUILDDATE $(BUILDDATE)" >> tmp/version.h
+	@echo "#define MYCOMPANY_VERSION \"$(VERSION)\"" >> tmp/version.h
+	@echo "#define MYCOMPANY_REVSION \"$(BUILD_NUMBER)\"" >> tmp/version.h
+	@echo "#define MYCOMPANY_BUILDDATE $(BUILDDATE)" >> tmp/version.h
 	@echo "#endif" >> tmp/version.h
 	@diff tmp/version.h include/version.h > /dev/null 2>&1; if [ $$? -ne 0 ] ; then cp tmp/version.h include/version.h; fi
 
