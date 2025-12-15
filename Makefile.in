@@ -26,9 +26,9 @@ LIBS		= $(LIBS_PPL7)  $(LIBS_PPLTK) @ASAN_FLAGS@ \
 PROGRAM	= MyCompany
 
 OBJECTS=compile/main.o \
-	compile/sdl.o \
-	compile/engine.o \
-	compile/gamewindow.o
+	compile/game.o \
+	compile/gameevents.o
+
 
 
 
@@ -110,7 +110,7 @@ update_version:
 	@diff tmp/version.h include/version.h > /dev/null 2>&1; if [ $$? -ne 0 ] ; then cp tmp/version.h include/version.h; fi
 
 
-compile/main.o: src/main.cpp Makefile include/sdl_wrapper.h
+compile/main.o: src/main.cpp Makefile include/gameengine.h
 	- @mkdir -p compile
 	$(CXX) -o compile/main.o -c src/main.cpp $(CFLAGS)
 
@@ -118,10 +118,10 @@ compile/sdl.o: src/sdl.cpp Makefile include/sdl_wrapper.h
 	- @mkdir -p compile
 	$(CXX) -o compile/sdl.o -c src/sdl.cpp $(CFLAGS)
 
-compile/engine.o: src/engine.cpp Makefile include/engine.h include/sdl_wrapper.h
+compile/game.o: src/game/game.cpp Makefile include/gameengine.h include/version.h
 	- @mkdir -p compile
-	$(CXX) -o compile/engine.o -c src/engine.cpp $(CFLAGS)
+	$(CXX) -o compile/game.o -c src/game/game.cpp $(CFLAGS)
 
-compile/gamewindow.o: src/gamewindow.cpp Makefile include/gamewindow.h
+compile/gameevents.o: src/game/gameevents.cpp Makefile include/gameengine.h
 	- @mkdir -p compile
-	$(CXX) -o compile/gamewindow.o -c src/gamewindow.cpp $(CFLAGS)
+	$(CXX) -o compile/gameevents.o -c src/game/gameevents.cpp $(CFLAGS)
