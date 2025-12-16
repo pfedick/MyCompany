@@ -1,6 +1,6 @@
 #ifndef VERSION_H_
 #define VERSION_H_
 #define MYCOMPANY_VERSION "0.0.1"
-#define MYCOMPANY_REVSION "5"
+#define MYCOMPANY_REVSION "6"
 #define MYCOMPANY_BUILDDATE 20251216
 #endif

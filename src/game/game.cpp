@@ -30,6 +30,7 @@ Game::Game() : ppltk::Window()
     menue = new ppltk::Frame(0, 0, this->width(), 32);
     addChild(menue);
     layout_menue = new ppltk::HBoxLayout();
+    layout_menue->setSpacing(1);
     menue->setLayout(layout_menue);
 
     ppltk::Label* label = new ppltk::Label("FPS:");
@@ -38,25 +39,16 @@ Game::Game() : ppltk::Window()
     fpsLabel = new ppltk::Label("0", ppltk::Label::Inset);
     layout_menue->addWidget(fpsLabel);
 
+    layout_menue->addWidget(new ppltk::Button("Button 1"));
+    layout_menue->addWidget(new ppltk::Button("Button 2"));
+    layout_menue->addWidget(new ppltk::Button("Button 3"));
+
     layout_menue->addSpacer(new ppltk::SpacerItem());
 
 
     exitButton = new ppltk::Button("Exit", wm->Toolbar.getDrawable(68));
     exitButton->setEventHandler(this);
     layout_menue->addWidget(exitButton);
-
-    ppl7::grafix::Size ss = label->sizeHint();
-    ppl7::PrintDebug("FPS Label: %d x %d\n", ss.width, ss.height);
-
-
-
-    ss = fpsLabel->sizeHint();
-    ppl7::PrintDebug("FPS: %d x %d\n", ss.width, ss.height);
-
-
-    ss = exitButton->sizeHint();
-    ppl7::PrintDebug("Button Size: %dx%d\n", ss.width, ss.height);
-
 
 
 }
