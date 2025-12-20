@@ -27,7 +27,15 @@ PROGRAM	= MyCompany
 
 OBJECTS=compile/main.o \
 	compile/game.o \
-	compile/gameevents.o
+	compile/gameevents.o \
+	compile/object.o \
+	compile/person.o \
+	compile/employee.o \
+	compile/team.o \
+	compile/task.o \
+	compile/project.o \
+	compile/product.o
+
 
 
 
@@ -125,3 +133,32 @@ compile/game.o: src/game/game.cpp Makefile include/gameengine.h include/version.
 compile/gameevents.o: src/game/gameevents.cpp Makefile include/gameengine.h
 	- @mkdir -p compile
 	$(CXX) -o compile/gameevents.o -c src/game/gameevents.cpp $(CFLAGS)
+
+
+compile/object.o: src/game/object.cpp Makefile include/company.h
+	- @mkdir -p compile
+	$(CXX) -o compile/object.o -c src/game/object.cpp $(CFLAGS)
+
+compile/person.o: src/game/person.cpp Makefile include/company.h
+	- @mkdir -p compile
+	$(CXX) -o compile/person.o -c src/game/person.cpp $(CFLAGS)
+
+compile/employee.o: src/game/employee.cpp Makefile include/company.h
+	- @mkdir -p compile
+	$(CXX) -o compile/employee.o -c src/game/employee.cpp $(CFLAGS)
+
+compile/team.o: src/game/team.cpp Makefile include/company.h
+	- @mkdir -p compile
+	$(CXX) -o compile/team.o -c src/game/team.cpp $(CFLAGS)
+
+compile/task.o: src/game/task.cpp Makefile include/company.h
+	- @mkdir -p compile
+	$(CXX) -o compile/task.o -c src/game/task.cpp $(CFLAGS)
+
+compile/project.o: src/game/project.cpp Makefile include/company.h
+	- @mkdir -p compile
+	$(CXX) -o compile/project.o -c src/game/project.cpp $(CFLAGS)
+
+compile/product.o: src/game/product.cpp Makefile include/company.h
+	- @mkdir -p compile
+	$(CXX) -o compile/product.o -c src/game/product.cpp $(CFLAGS)

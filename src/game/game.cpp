@@ -59,6 +59,7 @@ Game::~Game()
 
 void Game::init()
 {
+    nameGenerator.loadNames("german");
 }
 
 void Game::init_grafix()
