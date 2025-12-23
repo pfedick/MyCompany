@@ -60,6 +60,10 @@ Game::~Game()
 void Game::init()
 {
     nameGenerator.loadNames("german");
+
+    for (int i = 0;i < 100;i++) {
+        ppl7::PrintDebug("%s\n", (const char*)nameGenerator.randomName(Gender::GenderType::Male));
+    }
 }
 
 void Game::init_grafix()

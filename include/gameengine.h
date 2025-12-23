@@ -25,7 +25,7 @@ public:
     NameGenerator();
     void loadNames(const ppl7::String& locale);
 
-    ppl7::String randomName(Gender gender);
+    ppl7::String randomName(Gender::GenderType gender);
 
 };
 
